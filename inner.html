@@ -1,0 +1,38 @@
+<html>
+<head>
+  <title>iframe-experiments</title>
+  <link rel="stylesheet" href="app.css"></link>
+</head>
+<body>
+
+<p>This is the inner web page.</p>
+
+<p>Here is the hash from this page's URL:
+<span id="hash"></span></p>
+
+<p>Here is a random number that will change every time the page is reloaded:
+<span id="random-number"></span>
+</p>
+
+<script>
+
+function displayHash() {
+  document.querySelector('#hash').textContent = window.location.hash;
+}
+
+function displayNumber() {
+  var number = ~~(Math.random() * 1000000);
+  document.querySelector('#random-number').textContent = number;
+}
+
+((function go() {
+  displayHash();
+  displayNumber();
+
+  window.onhashchange = displayHash;
+})());
+
+</script>
+
+</body>
+</html>

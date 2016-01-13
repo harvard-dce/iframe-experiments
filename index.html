@@ -1,0 +1,29 @@
+<html>
+<head>
+  <title>iframe-experiments</title>
+  <link rel="stylesheet" href="app.css"></link>
+</head>
+<body>
+
+<h2>Does changing the hash of an iframe reload the web page?</h2>
+
+<p>This is the outer web page. It will periodically change the hash of the inner frame.</p>
+
+<iframe id="inner" src="inner.html#hey">
+</iframe>
+
+<script>
+var innerHash = 0;
+
+function changeInnerFrameHash() {
+  innerHash += 1;
+  document.querySelector('#inner').src = 'inner.html#' + innerHash;
+}
+
+((function go() {
+  setInterval(changeInnerFrameHash, 2000);
+})());
+</script>
+
+</body>
+</html>
