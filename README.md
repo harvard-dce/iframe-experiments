@@ -10,7 +10,7 @@ Usage
 
 You can also [see it running here](http://harvard-dce.github.io/iframe-experiments).
 
-[The postMessage tests are here.](https://jsbin.com/qoxogivise/edit?html,output).
+[The postMessage tests are here.](https://jsbin.com/qoxogivise/edit?html,output)
 
 License
 -------
