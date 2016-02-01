@@ -1,0 +1,66 @@
+<html>
+<head>
+  <title>message-poster</title>
+  <link rel="stylesheet" href="app.css"></link>
+</head>
+<body>
+
+<p>This is the inner web page, which posts messages to the parent.</p>
+
+<p>Here is this page's URL:
+<span id="inner-url"></span></p>
+
+<p>Here are the messages:</p>
+
+<ul id="messages"></ul>
+</ul>
+
+<script>
+
+var messages = [
+  'Hello.',
+  'Hello, again.',
+  'Goodbye.'
+];
+
+var messageIndex;
+var messageList;
+
+function displayUrl() {
+  document.querySelector('#inner-url').textContent = window.location;
+}
+
+function showMessage(message) {
+  var messageItem = document.createElement('li');
+  messageItem.textContent = message;
+  messageList.appendChild(messageItem);
+}
+
+function sendMessage(message) {
+  if (window.parent) {
+    window.parent.postMessage(message, '*');
+  }
+}
+
+function sendNextMessage() {
+  if (messageIndex < messages.length) {
+    var message = messages[messageIndex];
+    sendMessage(message);
+    showMessage(message)
+    messageIndex += 1;
+    setTimeout(sendNextMessage, 2000);
+  }
+}
+
+((function go() {
+  messageIndex = 0;
+  messageList = document.querySelector('#messages');
+
+  displayUrl();
+  sendNextMessage();
+})());
+
+</script>
+
+</body>
+</html>

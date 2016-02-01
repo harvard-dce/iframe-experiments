@@ -1,0 +1,40 @@
+<html>
+<head>
+  <title>message-receiver</title>
+  <link rel="stylesheet" href="app.css"></link>
+</head>
+<body>
+
+<h2>Can a page receive message from an iframe on a different domain?</h2>
+
+<p>This is the outer web page. Here is the page's URL:</p>
+
+<span id="url"></span></p>
+
+<p>Here is the iframe:</p>
+
+<iframe id="inner" src="http://harvard-dce.github.io/iframe-experiments/message-poster.html">
+</iframe>
+
+<p>The last message received from the iframe will be displayed here:<p>
+
+<span id="message"></span>
+
+<script>
+
+function displayUrl() {
+  document.querySelector('#url').textContent = window.location;
+}
+
+function receiveMessage(event) {
+  document.querySelector('#message').textContent = event.data;
+}
+
+((function go() {
+  window.addEventListener("message", receiveMessage, false);
+})());
+
+</script>
+
+</body>
+</html>
