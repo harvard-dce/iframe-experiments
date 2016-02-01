@@ -13,7 +13,7 @@
 
 <p>Here is the iframe:</p>
 
-<iframe id="inner" src="http://harvard-dce.github.io/iframe-experiments/message-poster.html">
+<iframe id="inner" src="https://harvard-dce.github.io/iframe-experiments/message-poster.html">
 </iframe>
 
 <p>The last message received from the iframe will be displayed here:<p>
@@ -31,6 +31,7 @@ function receiveMessage(event) {
 }
 
 ((function go() {
+  displayUrl();
   window.addEventListener("message", receiveMessage, false);
 })());
 
